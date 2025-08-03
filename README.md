@@ -1,59 +1,36 @@
-# Products
+## FrontEnd + Docker Compose – Sistema de Productos y Categorías.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+Desarrollar la interfaz gráfica de usuario (FrontEnd) para un sistema de gestión de productos y categorías, consumiendo las API REST existentes desarrolladas con Spring Boot. Además, integrar toda la solución en un entorno Docker usando Docker Compose, que incluya base de datos, backend y frontend como contenedores independientes.
 
-## Development server
 
-To start a local development server, run:
+### Requerimientos funcionales.
 
-```bash
-ng serve
-```
+- Listar.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Crear.
 
-## Code scaffolding
+- Editar.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Eliminar.
 
-```bash
-ng generate component component-name
-```
+- Validar campos a nivel de FrontEnd y BackEnd.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Requerimientos No funcionales.
 
-```bash
-ng generate --help
-```
+- Diseño responsivo y amigable
 
-## Building
+- Crear un archivo docker compose que levante todo el sistema (API's, FrontEnd, Bdd)
 
-To build the project run:
+### Requisitos Técnicos.
 
-```bash
-ng build
-```
+- Angular 19.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- SpringBoot con Java 17.
 
-## Running unit tests
+- Base de datos MySql.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Docker Compose
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Entregables:
+- Link de GitHub.
+- Instrucciones claras en un archivo README.md para levantar todo con un solo comando.
