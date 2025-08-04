@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, Signal } from '@angular/core';
-import { ProductsEditForm } from "../forms/products-edit-form/products-edit-form";
+import { ProductsEditForm } from '../forms/products-edit-form/products-edit-form';
 
 @Component({
   selector: 'app-table',
@@ -21,6 +21,7 @@ export class Table {
       .subscribe({
         next: () => {
           alert('Product added successfully!');
+          window.location.reload();
         },
         error: (err: any) => {
           alert(`Error: ${err.message}`);
@@ -28,7 +29,7 @@ export class Table {
       });
   }
 
- // Track which product is being edited
+  // Track which product is being edited
   productToEdit: any = null;
   showEditModal = false;
 
@@ -49,6 +50,7 @@ export class Table {
             alert(
               `${item.price ? 'Product' : 'Category'} deleted successfully!`
             );
+            window.location.reload();
           },
           error: (err: any) => {
             alert(`Error: ${err.message}`);

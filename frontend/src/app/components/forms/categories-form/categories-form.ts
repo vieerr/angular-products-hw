@@ -21,6 +21,7 @@ export class CategoriesForm {
       .subscribe({
         next: () => {
           alert('Category added successfully!');
+          window.location.reload();
         },
         error: (err: any) => {
           alert(`Error: ${err.message}`);

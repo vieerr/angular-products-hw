@@ -21,6 +21,7 @@ export class ProductsForm {
       .subscribe({
         next: () => {
           alert('Product added successfully!');
+          window.location.reload();
         },
         error: (err: any) => {
           alert(`Error: ${err.message}`);

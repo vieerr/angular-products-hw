@@ -24,10 +24,12 @@
                 <label class="my-3 label">
                     <span class="label-text">Description</span>
                 </label>
+                <br>
                 <textarea
                     class="textarea textarea-bordered h-24"
                     name="descripcion"
                     ngModel
+                    type="text"
                     placeholder="Category description"
                 ></textarea>
             </div>
@@ -38,7 +40,7 @@
                 <button
                     class="btn btn-primary"
                     type="submit"
-                    [disabled]="categoryForm.invalid"
+                    [disabled]="!categoryForm.valid"
                 >
                     Add Category
                 </button>

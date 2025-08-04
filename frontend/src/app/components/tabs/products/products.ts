@@ -29,7 +29,9 @@ export class Products {
       next: (products: any) => {
         products.forEach((product: any) => {
           const category = this.categories().find((cat: any) => cat.id === product.categoryId);
-          product.categoryNombre = category ? category.nombre : 'Sin categoría';
+          product.category = category ? category.nombre : 'Sin categoría';
+          delete product.categoryId;
+          product.price = `$ ${product.price}`;
         });
         this.products.set(products);
       },
