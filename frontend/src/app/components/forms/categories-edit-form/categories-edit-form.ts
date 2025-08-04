@@ -28,7 +28,7 @@ export class CategoriesEditForm {
       return;
     }
     this.http
-      .put(`http://localhost:8080/api/categories/${this.category.id}`, {
+      .patch(`http://localhost:8080/api/categories/${this.category.id}`, {
         ...categoryData,
       })
       .subscribe({
