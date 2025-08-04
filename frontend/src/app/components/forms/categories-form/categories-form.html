@@ -1,0 +1,51 @@
+<button class="btn btn-primary m-5" (click)="categoriesModal.showModal()">
+    Add Category
+</button>
+
+<dialog #categoriesModal class="modal">
+    <div class="modal-box max-w-2xl">
+        <h3 class="text-lg font-bold">Add Category</h3>
+
+        <form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm.value)">
+            <div class="form-control mb-4">
+                <label class="my-3 label">
+                    <span class="label-text">Category Name</span>
+                </label>
+                <input
+                    class="input input-bordered w-full"
+                    type="text"
+                    name="nombre"
+                    ngModel
+                    required
+                    placeholder="Category name"
+                />
+            </div>
+            <div class="form-control mb-4">
+                <label class="my-3 label">
+                    <span class="label-text">Description</span>
+                </label>
+                <textarea
+                    class="textarea textarea-bordered h-24"
+                    name="descripcion"
+                    ngModel
+                    placeholder="Category description"
+                ></textarea>
+            </div>
+            <div class="modal-action">
+                <button class="btn" type="button" (click)="categoriesModal.close()">
+                    Cancel
+                </button>
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                    [disabled]="categoryForm.invalid"
+                >
+                    Add Category
+                </button>
+            </div>
+        </form>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button (click)="categoriesModal.close()">close</button>
+    </form>
+</dialog>

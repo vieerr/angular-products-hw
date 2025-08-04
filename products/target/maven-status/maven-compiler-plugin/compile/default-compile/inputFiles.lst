@@ -1,0 +1,9 @@
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/ProductsApplication.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/client/CategoryClient.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/client/CategoryDTO.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/controllers/ProductController.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/exceptions/ValidationExceptionHandler.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/models/entities/Product.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/repositories/ProductRepository.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/service/ProductService.java
+/home/vier/college/awd/sb/api/src/main/java/com/saintroche/products/service/ProductServiceImp.java

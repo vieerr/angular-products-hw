@@ -1,0 +1,9 @@
+com/saintroche/products/controllers/ProductController.class
+com/saintroche/products/exceptions/ValidationExceptionHandler.class
+com/saintroche/products/ProductsApplication.class
+com/saintroche/products/service/ProductService.class
+com/saintroche/products/repositories/ProductRepository.class
+com/saintroche/products/client/CategoryClient.class
+com/saintroche/products/client/CategoryDTO.class
+com/saintroche/products/models/entities/Product.class
+com/saintroche/products/service/ProductServiceImp.class
