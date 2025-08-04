@@ -18,17 +18,24 @@ export class ProductsEditForm {
   @Input() product: any;
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
-
+  ngOnInit() {
+    console.log('Product:', this.product);
+  }
   updateProduct(productData: any) {
     if (!this.product?.id) {
       alert('Product ID is missing!');
       return;
     }
     this.http
-      .put(`http://localhost:8080/api/products/${this.product.id}`, productData)
+      .put(`http://localhost:8080/api/products/${this.product.id}`, {
+        ...productData,
+        categoryId: Number(productData.categoryId),
+      })
       .subscribe({
         next: () => {
           alert('Product updated successfully!');
+          console.log('Product updated:', productData);
+          // window.location.reload();
         },
         error: (err: any) => {
           alert(`Error: ${err.message}`);

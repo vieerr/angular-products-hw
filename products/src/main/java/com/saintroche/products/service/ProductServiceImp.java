@@ -60,6 +60,9 @@ public class ProductServiceImp implements ProductService {
         if (product.getPrice() != null) {
             existingProduct.setPrice(product.getPrice());
         }
+        if (product.getCategoryId() != null) {
+            existingProduct.setCategoryId(product.getCategoryId());
+        }
 
         return productRepository.save(existingProduct);
     }

@@ -30,13 +30,8 @@ export class Products {
         products.forEach((product: any) => {
           const category = this.categories().find((cat: any) => cat.id === product.categoryId);
           product.category = category ? category.nombre : 'Sin categoría';
-          delete product.categoryId;
-          product.price = `$ ${product.price}`;
         });
         this.products.set(products);
-      },
-      error: (error) => {
-        alert('Error fetching data: ' + error);
       },
     });
   }

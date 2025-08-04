@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, Input, Signal } from '@angular/core';
 import { ProductsEditForm } from '../forms/products-edit-form/products-edit-form';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-table',
-  imports: [ProductsEditForm],
+  imports: [ProductsEditForm, CommonModule],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })

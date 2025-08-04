@@ -6,7 +6,7 @@
       <thead>
         <tr>
           @for (key of objectKeys(data()[0]); track $index) {
-          <th>{{key.toLocaleUpperCase()}}</th>
+          <th *ngIf="key !== 'categoryId'">{{key.toLocaleUpperCase()}}</th>
           }
           <th>Actions</th>
         </tr>
@@ -15,13 +15,18 @@
         @for (item of data(); track item.id) {
         <tr>
           @for (key of objectKeys(item); track $index) {
-          <td>{{item[key]}}</td>
+          <td *ngIf="key !== 'categoryId'">
+            {{ key === 'price' ? ('$ ' + item[key]) : item[key] }}
+          </td>
           }
           <td class="flex gap-3">
-            <button class="btn btn-primary btn-sm" (click)="edit(item)">
-              Edit
-            </button>
-            <button class="btn btn-secondary btn-sm" (click)="delete(item)">
+            <button
+              *ngIf="!item.fechaCreacion"
+              class="btn btn-primary btn-sm"
+              (click)="edit(item)"
+            >
+              Edit</button
+            ><button class="btn btn-secondary btn-sm" (click)="delete(item)">
               Delete
             </button>
           </td>

@@ -21,9 +21,6 @@ export class Categories {
       next: (categories: any) => {
         this.categories.set(categories);
       },
-      error: (error) => {
-        alert('Error fetching data: ' + error);
-      },
     });
   }
 }
