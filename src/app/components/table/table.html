@@ -1,34 +1,39 @@
 <!-- <div class="mockup-window border border-base-300 w-full"> -->
-  <div class="p-10 w-full border-t border-base-300 h-fit">
-    <h2 class="text-2xl font-bold mb-4">{{title}}</h2>
-    <div class="overflow-x-auto">
-      <table class="table table-zebra">
-        <thead>
-          <tr>
-            @for (key of objectKeys(data()[0]); track $index) {
-            <th>{{key.toLocaleUpperCase()}}</th>
-            }
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of data(); track item.id) {
-          <tr>
-            @for (key of objectKeys(item); track $index) {
-            <td>{{item[key]}}</td>
-            }
-            <td class="flex gap-3">
-              <button class="btn btn-primary btn-sm" (click)="edit(item)">
-                Edit
-              </button>
-              <button class="btn btn-secondary btn-sm" (click)="delete(item)">
-                Delete
-              </button>
-            </td>
-          </tr>
+<div class="p-10 w-full border-t border-base-300 h-fit">
+  <h2 class="text-2xl font-bold mb-4">{{title}}</h2>
+  <div class="overflow-x-auto">
+    <table class="table table-zebra">
+      <thead>
+        <tr>
+          @for (key of objectKeys(data()[0]); track $index) {
+          <th>{{key.toLocaleUpperCase()}}</th>
           }
-        </tbody>
-      </table>
-    </div>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of data(); track item.id) {
+        <tr>
+          @for (key of objectKeys(item); track $index) {
+          <td>{{item[key]}}</td>
+          }
+          <td class="flex gap-3">
+            <button class="btn btn-primary btn-sm" (click)="edit(item)">
+              Edit
+            </button>
+            <button class="btn btn-secondary btn-sm" (click)="delete(item)">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
-<!-- </div> -->
+</div>
+@if (showEditModal && productToEdit) {
+<app-products-edit-form
+  [product]="productToEdit"
+  (cancel)="showEditModal = false"
+/>
+}

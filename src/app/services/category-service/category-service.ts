@@ -1,4 +1,3 @@
-// src/app/services/category.service.ts
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
@@ -6,24 +5,23 @@ import { of } from 'rxjs';
 
 interface Category {
   id: string;
-  name: string;
-  slug: string;
+  nombre: string;
+  descripcion: string;
+  fechaCreacion: string;  
 }
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
   private http = inject(HttpClient);
-  
-  // Signal containing all categories
+
   private _categories = signal<Category[]>([]);
-  
-  // Public computed signal (readonly)
+
+  private uri = 'http://localhost:8080/api/categories';
+
   categories = computed(() => this._categories());
-  
-  // Loading state
+
   isLoading = signal(false);
-  
-  // Error state
+
   error = signal<string | null>(null);
 
   constructor() {
@@ -33,14 +31,15 @@ export class CategoryService {
   loadCategories() {
     this.isLoading.set(true);
     this.error.set(null);
-    
-    this.http.get<Category[]>('/api/categories')
+
+    this.http
+      .get<Category[]>(this.uri)
       .pipe(
-        tap(categories => {
+        tap((categories) => {
           this._categories.set(categories);
           this.isLoading.set(false);
         }),
-        catchError(err => {
+        catchError((err) => {
           this.error.set(err.message);
           this.isLoading.set(false);
           return of([]);
@@ -51,33 +50,33 @@ export class CategoryService {
 
   addCategory(category: Omit<Category, 'id'>) {
     this.isLoading.set(true);
-    
-    return this.http.post<Category>('/api/categories', category)
-      .pipe(
-        tap(newCategory => {
-          this._categories.update(categories => [...categories, newCategory]);
-        }),
-        catchError(err => {
-          this.error.set(err.message);
-          return of(null);
-        }),
-        tap(() => this.isLoading.set(false))
-      );
+
+    return this.http.post<Category>(this.uri, category).pipe(
+      tap((newCategory) => {
+        this._categories.update((categories) => [...categories, newCategory]);
+      }),
+      catchError((err) => {
+        this.error.set(err.message);
+        return of(null);
+      }),
+      tap(() => this.isLoading.set(false))
+    );
   }
 
   updateCategory(updatedCategory: Category) {
     this.isLoading.set(true);
-    
-    return this.http.put<Category>(`/api/categories/${updatedCategory.id}`, updatedCategory)
+
+    return this.http
+      .put<Category>(`${this.uri}/${updatedCategory.id}`, updatedCategory)
       .pipe(
-        tap(returnedCategory => {
-          this._categories.update(categories => 
-            categories.map(cat => 
+        tap((returnedCategory) => {
+          this._categories.update((categories) =>
+            categories.map((cat) =>
               cat.id === returnedCategory.id ? returnedCategory : cat
             )
           );
         }),
-        catchError(err => {
+        catchError((err) => {
           this.error.set(err.message);
           return of(null);
         }),
@@ -87,19 +86,18 @@ export class CategoryService {
 
   deleteCategory(id: string) {
     this.isLoading.set(true);
-    
-    return this.http.delete(`/api/categories/${id}`)
-      .pipe(
-        tap(() => {
-          this._categories.update(categories => 
-            categories.filter(cat => cat.id !== id)
-          );
-        }),
-        catchError(err => {
-          this.error.set(err.message);
-          return of(null);
-        }),
-        tap(() => this.isLoading.set(false))
-      );
+
+    return this.http.delete(`${this.uri}/${id}`).pipe(
+      tap(() => {
+        this._categories.update((categories) =>
+          categories.filter((cat) => cat.id !== id)
+        );
+      }),
+      catchError((err) => {
+        this.error.set(err.message);
+        return of(null);
+      }),
+      tap(() => this.isLoading.set(false))
+    );
   }
 }

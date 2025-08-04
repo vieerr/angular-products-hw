@@ -5,22 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../../../services/category-service/category-service';
 
 @Component({
-  selector: 'app-products-form',
+  selector: 'app-categories-form',
   imports: [FormsModule, CommonModule],
-  templateUrl: './products-form.html',
-  styleUrl: './products-form.css',
+  templateUrl: './categories-form.html',
+  styleUrl: './categories-form.css'
 })
-export class ProductsForm {
+export class CategoriesForm {
   private http = inject(HttpClient);
   categoryService = inject(CategoryService);
   categories = this.categoryService.categories;
 
-  addProduct(productData: any) {
+  addCategory(categoryData: any) {
     this.http
-      .post('http://localhost:8080/api/products', productData)
+      .post('http://localhost:8080/api/categories', categoryData)
       .subscribe({
         next: () => {
-          alert('Product added successfully!');
+          alert('Category added successfully!');
         },
         error: (err: any) => {
           alert(`Error: ${err.message}`);

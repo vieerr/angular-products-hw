@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 import { Table } from "../../table/table";
+import { CategoriesForm } from "../../forms/categories-form/categories-form";
 
 @Component({
   selector: 'app-categories',
-  imports: [Table],
+  imports: [Table, CategoriesForm],
   templateUrl: './categories.html',
   styleUrl: './categories.css'
 })
