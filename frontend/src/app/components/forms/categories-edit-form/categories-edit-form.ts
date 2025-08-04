@@ -5,36 +5,36 @@ import { FormsModule } from '@angular/forms';
 import { CategoryService } from '../../../services/category-service/category-service';
 
 @Component({
-  selector: 'app-products-edit-form',
+  selector: 'app-categories-edit-form',
   imports: [FormsModule, CommonModule],
-  templateUrl: './products-edit-form.html',
-  styleUrl: './products-edit-form.css',
+  templateUrl: './categories-edit-form.html',
+  styleUrl: './categories-edit-form.css',
 })
-export class ProductsEditForm {
+export class CategoriesEditForm {
   private http = inject(HttpClient);
   categoryService = inject(CategoryService);
-  categories = this.categoryService.categories;
 
-  @Input() product: any;
+  @Input() category: any;
   @Output() save = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<void>();
+
   ngOnInit() {
-    console.log('Product:', this.product);
+    console.log('Category:', this.category);
   }
-  updateProduct(productData: any) {
-    if (!this.product?.id) {
-      alert('Product ID is missing!');
+
+  updateCategory(categoryData: any) {
+    if (!this.category?.id) {
+      alert('Category ID is missing!');
       return;
     }
     this.http
-      .put(`http://localhost:8080/api/products/${this.product.id}`, {
-        ...productData,
-        categoryId: Number(productData.categoryId),
+      .put(`http://localhost:8080/api/categories/${this.category.id}`, {
+        ...categoryData,
       })
       .subscribe({
         next: () => {
-          alert('Product updated successfully!');
-          console.log('Product updated:', productData);
+          alert('Category updated successfully!');
+          console.log('Category updated:', categoryData);
           window.location.reload();
         },
         error: (err: any) => {

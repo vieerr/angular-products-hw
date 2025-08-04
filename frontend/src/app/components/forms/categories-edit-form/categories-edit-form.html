@@ -1,0 +1,52 @@
+<dialog #categoriesModal class="modal modal-open">
+    <div class="modal-box max-w-2xl">
+        <h3 class="text-lg font-bold">Edit Category</h3>
+
+        <form #categoryForm="ngForm" (ngSubmit)="updateCategory(categoryForm.value)">
+            <div class="form-control mb-4">
+                <label class="my-3 label">
+                    <span class="label-text">Category Name</span>
+                </label>
+                <input
+                    class="input input-bordered w-full"
+                    type="text"
+                    name="nombre"
+                    ngModel
+                    required
+                    placeholder="Category name"
+                    [ngModel]="category?.nombre"
+                />
+            </div>
+
+            <div class="form-control mb-4">
+                <label class="my-3 label">
+                    <span class="label-text">Description</span>
+                </label>
+                <textarea
+                    class="textarea textarea-bordered h-24"
+                    name="descripcion"
+                    ngModel
+                    placeholder="Category description"
+                    [ngModel]="category?.descripcion"
+                ></textarea>
+            </div>
+
+            <div class="modal-action">
+                <button class="btn" type="button" (click)="cancel.emit()">
+                    Cancel
+                </button>
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                    (click)="updateCategory(categoryForm.value)"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <form method="dialog" class="modal-backdrop">
+        <button (click)="cancel.emit()">close</button>
+    </form>
+</dialog>

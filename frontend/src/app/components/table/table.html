@@ -21,7 +21,6 @@
           }
           <td class="flex gap-3">
             <button
-              *ngIf="!item.fechaCreacion"
               class="btn btn-primary btn-sm"
               (click)="edit(item)"
             >
@@ -37,8 +36,14 @@
   </div>
 </div>
 @if (showEditModal && productToEdit) {
-<app-products-edit-form
-  [product]="productToEdit"
-  (cancel)="showEditModal = false"
-/>
+  <app-products-edit-form
+    [product]="productToEdit"
+    (cancel)="showEditModal = false"
+  />
+}
+@if (showCategoryEditModal && categoryToEdit) {
+  <app-categories-edit-form
+    [category]="categoryToEdit"
+    (cancel)="showCategoryEditModal = false"
+  />
 }
