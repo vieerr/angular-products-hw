@@ -27,7 +27,7 @@ export class ProductsEditForm {
       return;
     }
     this.http
-      .put(`http://localhost:8080/api/products/${this.product.id}`, {
+      .put(`/api/products/${this.product.id}`, {
         ...productData,
         categoryId: Number(productData.categoryId),
       })

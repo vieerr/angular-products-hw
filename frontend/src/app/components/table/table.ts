@@ -26,8 +26,8 @@ export class Table {
   addItem(itemData: any) {
     const endpoint =
       this.type === 'products'
-        ? 'http://localhost:8080/api/products'
-        : 'http://localhost:8080/api/categories';
+        ? '/api/products'
+        : '/api/categories';
     this.http.post(endpoint, itemData).subscribe({
       next: () => {
         alert(
@@ -58,7 +58,7 @@ export class Table {
       )
     ) {
       this.http
-        .delete(`http://localhost:8080/api/${this.type}/${item.id}`)
+        .delete(`/api/${this.type}/${item.id}`)
         .subscribe({
           next: () => {
             alert(

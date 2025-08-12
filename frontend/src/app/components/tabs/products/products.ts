@@ -23,8 +23,7 @@ export class Products {
   constructor(private http: HttpClient) {}
 
   async ngOnInit() {
-    // assuming our gateway is running on localhost:8080
-    const response = this.http.get('http://localhost:8080/api/products');
+    const response = this.http.get('/api/products');
     response.subscribe({
       next: (products: any) => {
         products.forEach((product: any) => {

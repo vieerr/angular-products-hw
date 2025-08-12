@@ -17,7 +17,7 @@ export class ProductsForm {
 
   addProduct(productData: any) {
     this.http
-      .post('http://localhost:8080/api/products', productData)
+      .post('/api/products', productData)
       .subscribe({
         next: () => {
           alert('Product added successfully!');

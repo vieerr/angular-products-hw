@@ -16,7 +16,7 @@ export class CategoryService {
 
   private _categories = signal<Category[]>([]);
 
-  private uri = 'http://localhost:8080/api/categories';
+  private uri = '/api/categories';
 
   categories = computed(() => this._categories());
 

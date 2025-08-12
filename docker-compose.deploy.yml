@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # MySQL Database
   db:
-    image: mysql:8-alpine
+    image: mysql
     container_name: test-db
     environment:
       MYSQL_ROOT_PASSWORD: admin123
@@ -70,7 +70,7 @@ services:
     image: vierpaspuel/frontend
     container_name: frontend
     ports:
-      - "5173:80"
+      - "80:80"
     depends_on:
       - gateway
     networks:
@@ -83,3 +83,4 @@ volumes:
 networks:
   test-network:
     driver: bridge
+

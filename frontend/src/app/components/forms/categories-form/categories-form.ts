@@ -17,7 +17,7 @@ export class CategoriesForm {
 
   addCategory(categoryData: any) {
     this.http
-      .post('http://localhost:8080/api/categories', categoryData)
+      .post('/api/categories', categoryData)
       .subscribe({
         next: () => {
           alert('Category added successfully!');

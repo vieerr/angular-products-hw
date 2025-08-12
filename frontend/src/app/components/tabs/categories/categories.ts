@@ -15,8 +15,7 @@ export class Categories {
   constructor(private http: HttpClient) {}
 
   async ngOnInit() {
-    // assuming our gateway is running on localhost:8080
-    const response = this.http.get('http://localhost:8080/api/categories');
+    const response = this.http.get('/api/categories');
     response.subscribe({
       next: (categories: any) => {
         this.categories.set(categories);
